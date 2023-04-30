@@ -18,6 +18,7 @@ export const useStyles = createStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    marginRight: '80px',
 
     '& svg': {
       width: '25px',
