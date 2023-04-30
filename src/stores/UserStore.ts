@@ -8,9 +8,14 @@ export class UserStore {
   token = '';
   groups: IGroups | null = null;
   platform: string | null = null;
+  hashId: string | null = null;
 
   setUserInfo = (data: UserInfo) => {
     this.userInfo = data;
+  };
+
+  setHashId = (hashId: string) => {
+    this.hashId = hashId;
   };
 
   setUserToken = (token: string) => {
@@ -42,7 +47,8 @@ export class UserStore {
       setUserInfo: action,
       setUserToken: action,
       setGroups: action,
-      setPlatform: action
+      setPlatform: action,
+      setHashId: action
     });
   }
 }

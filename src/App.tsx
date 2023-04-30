@@ -11,6 +11,8 @@ import { getUserPlatform } from './utils/vk/bridge-methods';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+const hashId = document.location.hash.replace('#', '');
+
 const App = observer(() => {
   const { UserStore } = useStores();
 
@@ -27,6 +29,11 @@ const App = observer(() => {
     (async () => {
       const user = await bridge.send('VKWebAppGetUserInfo');
       localStorage.setItem('userInfo', JSON.stringify(user));
+
+      if (hashId) {
+        localStorage.setItem('newsId', hashId);
+        await bridge.send('VKWebAppStorageSet', { key: 'newsId', value: hashId });
+      }
 
       UserStore.setUserInfo(user);
     })();
