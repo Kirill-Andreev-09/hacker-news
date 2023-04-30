@@ -26,7 +26,7 @@ ${data.url ? `Источник: ${data.url}` : ''}
   const handleClick = (type: string) => {
     switch (type) {
       case 'wall':
-        shareWall(newsText);
+        shareWall(newsText, link);
         break;
       case 'send':
         shareLink(link);

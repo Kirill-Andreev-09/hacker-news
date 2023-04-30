@@ -59,7 +59,7 @@ export const sharingStory = async (link: string) => {
 };
 
 //  Добавление репоста на стену пользователя
-export const shareWall = (text: string) => {
+export const shareWall = (text: string, link: string) => {
   // e.preventDefault();
 
   const message = `
@@ -69,6 +69,6 @@ export const shareWall = (text: string) => {
 
   bridge.send('VKWebAppShowWallPostBox', {
     message: message,
-    attachments: APP_URL
+    attachments: link
   });
 };

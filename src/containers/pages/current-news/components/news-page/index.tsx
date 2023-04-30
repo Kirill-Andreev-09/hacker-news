@@ -59,7 +59,7 @@ export const NewsPage = observer(() => {
               <Text color="white">
                 Источник:{' '}
                 <Anchor href={article.url} target="_blank">
-                  {article.url}
+                  ссылка
                 </Anchor>
               </Text>
 
