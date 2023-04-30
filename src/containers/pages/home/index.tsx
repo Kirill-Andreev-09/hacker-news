@@ -6,21 +6,25 @@ import { ROUTES } from 'src/containers/routes/constants';
 import { observer } from 'mobx-react';
 import { useStores } from 'src/utils/hooks/useStores';
 import { toJS } from 'mobx';
+import bridge from '@vkontakte/vk-bridge';
 
 export const Home = observer(() => {
   const navigate = useNavigate();
   const { UserStore } = useStores();
 
   useEffect(() => {
-    const id = toJS(UserStore.hashId);
+    (async () => {
+      const id = toJS(UserStore.hashId);
+      const dataKeys = await bridge.send('VKWebAppStorageGet', { keys: ['newsId'] });
+      const hashId = dataKeys?.keys?.find((item) => item.key === 'newsId')?.value;
 
-    console.log('Home id', id);
-    console.log('Home UserStore.hashId', UserStore.hashId);
+      console.log('Home hashId', hashId);
+      console.log('Home id', id);
 
-    if (UserStore.hashId) {
-      navigate(`${ROUTES.currentNews.path}/${id}`);
-      UserStore.setHashId('');
-    }
+      if (hashId) {
+        navigate(`${ROUTES.currentNews.path}/${hashId}`);
+      }
+    })();
   }, []);
 
   return (

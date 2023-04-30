@@ -19,9 +19,11 @@ const App = observer(() => {
   const queryClient = new QueryClient();
 
   useEffect(() => {
-    if (hashId) {
-      UserStore.setHashId(hashId);
-    }
+    (async () => {
+      if (hashId) {
+        await bridge.send('VKWebAppStorageSet', { key: 'newsId', value: hashId });
+      }
+    })();
   }, []);
 
   useEffect(() => {
