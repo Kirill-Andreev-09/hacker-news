@@ -19,6 +19,12 @@ const App = observer(() => {
   const queryClient = new QueryClient();
 
   useEffect(() => {
+    if (hashId) {
+      UserStore.setHashId(hashId);
+    }
+  }, []);
+
+  useEffect(() => {
     (async () => {
       const platform = await getUserPlatform();
       UserStore.setPlatform(platform);
@@ -29,11 +35,6 @@ const App = observer(() => {
     (async () => {
       const user = await bridge.send('VKWebAppGetUserInfo');
       localStorage.setItem('userInfo', JSON.stringify(user));
-
-      if (hashId) {
-        localStorage.setItem('newsId', hashId);
-        await bridge.send('VKWebAppStorageSet', { key: 'newsId', value: hashId });
-      }
 
       UserStore.setUserInfo(user);
     })();

@@ -11,12 +11,17 @@ export const Home = observer(() => {
   const { UserStore } = useStores();
 
   useEffect(() => {
-    const newsId = localStorage.getItem('newsId');
+    // const newsId = localStorage.getItem('newsId');
 
-    if (newsId) {
-      navigate(`${ROUTES.currentNews.path}/${newsId}`);
-      return;
-    } else if (UserStore.hashId) {
+    // if (newsId) {
+    //   navigate(`${ROUTES.currentNews.path}/${newsId}`);
+    //   localStorage.setItem('newsId', '');
+    // } else if (UserStore.hashId) {
+    //   navigate(`${ROUTES.currentNews.path}/${UserStore.hashId}`);
+    //   UserStore.setHashId('');
+    // }
+
+    if (UserStore.hashId) {
       navigate(`${ROUTES.currentNews.path}/${UserStore.hashId}`);
       UserStore.setHashId('');
     }

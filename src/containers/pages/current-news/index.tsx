@@ -8,7 +8,7 @@ export const CurrentNews = observer(() => {
   const { UserStore } = useStores();
 
   useEffect(() => {
-    localStorage.setItem('newsId', '');
+    // localStorage.setItem('newsId', '');
     UserStore.setHashId('');
   }, []);
 
