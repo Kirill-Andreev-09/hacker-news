@@ -30,8 +30,6 @@ export const NewsPage = observer(() => {
     await refetchComments();
   };
 
-  console.log('UserStore', UserStore.userInfo);
-
   useEffect(() => {
     refetchComments();
   }, []);

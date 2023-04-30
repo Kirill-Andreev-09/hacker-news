@@ -43,6 +43,7 @@ export class UserStore {
       token: observable,
       groups: observable,
       platform: observable,
+      hashId: observable,
       resetStore: action,
       setUserInfo: action,
       setUserToken: action,
