@@ -4,7 +4,7 @@ import { NewsPage } from './components';
 
 export const CurrentNews = () => {
   useEffect(() => {
-    localStorage.setItem('refId', '');
+    localStorage.setItem('newsId', '');
   }, []);
 
   return (
